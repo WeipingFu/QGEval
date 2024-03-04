@@ -9,7 +9,7 @@ The average annotation scores of each QG system over eight dimensions are shown 
 | **Systems**                | **Flu.** | **Clar.** | **Conc.** | **Rel.** | **Cons.** | **Ans.** | **Acc.** | **AnsC.** |
 |-----------------------------|----------|-----------|-----------|----------|-----------|----------|----------|-----------|
 | M1 - Reference              | 2.968    | 2.930     | **2.998** | 2.993    | 2.923     | 2.832    | **2.785** | **2.768** |
-| M2 - BART-base-finetune     | 2.958    | 2.882     | 2.898     | 2.995    | 2.923     | <span style="text-decoration:underline;">2.732</span>  | <span style="text-decoration:underline;">2.638</span>| 2.588     |
+| M2 - BART-base-finetune     | 2.958    | 2.882     | 2.898     | 2.995    | 2.923     | <u>2.732</u>  | <span style="text-decoration:underline;">2.638</span>| 2.588     |
 | M3 - BART-large-finetune    | <span style="text-decoration:underline;">2.933</span>  | 2.915     | <span style="text-decoration:underline;">2.828</span>   | 2.995    | 2.935     | 2.825    | 2.662    | **2.737** |
 | M4 - T5-base-finetune       | 2.972    | 2.923     | 2.922     | **3.000**| <span style="text-decoration:underline;">2.917</span>   | 2.788    | 2.685    | 2.652     |
 | M5 - T5-large-finetune      | 2.978    | 2.930     | 2.907     | 2.995    | 2.933     | 2.795    | 2.695    | 2.720     |
