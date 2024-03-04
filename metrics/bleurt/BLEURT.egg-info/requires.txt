@@ -1,0 +1,6 @@
+pandas
+numpy
+scipy
+tensorflow
+tf-slim>=1.1
+sentencepiece

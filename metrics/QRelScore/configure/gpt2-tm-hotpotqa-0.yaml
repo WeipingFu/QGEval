@@ -1,0 +1,62 @@
+NAME: 'gpt2-tm-hotpotqa-0'
+DEVICE: 'cuda:0,1,2,3'
+ACCELERATOR: 'ddp'
+SEED: 32767
+SUMMARY_DIR: '/path/to/home/to/your/project/qgbase/summary'
+CUDNN:
+  BENCHMARK: True
+  DETERMINISTIC: False
+  ENABLED: True
+MODEL:
+  LM_TYPE: AutoModelForCausalLM
+  PRETRAINED_MODEL_NAME_OR_PATH: gpt2
+  DO_LOWER_CASE: False
+  DOC_STRIDE: 320
+  MAX_INPUT_LENGTH: 384
+  MAX_QUERY_LENGTH: 64
+  SPECIAL_TOKENS:
+    PAD_TOKEN: '<pad>'
+
+    CLS_TOKEN: '<cls>'
+    SEP_TOKEN: '<sep>'
+
+    BOS_TOKEN: '<bos>'
+    EOS_TOKEN: '<eos>'
+    
+    CXT_TOKEN: '<cxt>'
+    ANS_TOKEN: '<ans>'
+    QUE_TOKEN: '<que>'
+TRAIN:
+  TRAINER_MODULE: TrainerModule
+  DATASET: HotpotQACLMDataset
+  NUM_EPOCHS: 128
+  NUM_WARMUP_STEPS: 2048
+  BATCH_SIZE: 4
+  PATIENCE: 8
+  DATASET_FILENAME: '/path/to/home/to/your/project/hotpotqa/train-v1.1.json'
+  LR: 6.25e-5
+  EXTRA_LR: 1.00e-4
+  LD: 0.9
+  WD: 0.0005
+  MOMENTUM: 0.9
+  NESTEROV: False
+
+  RESUME: True
+  LOSS_FREQ: 10
+  TB_FREQ: 10
+  DEV_FREQ: 10
+
+  WORKERS: 32
+VAL:
+  DATASET_FILENAME: '/path/to/home/to/your/project/hotpotqa/dev-v1.1-val.json'
+  BATCH_SIZE: 4
+  WORKERS: 32
+TEST:
+  DATASET_FILENAME: '/path/to/home/to/your/project/hotpotqa/dev-v1.1.json'
+  BATCH_SIZE: 4
+  WORKERS: 32
+GENERATE:
+  TEMPERATURE: 0.85
+  TOP_P: 0.9
+  TOP_K: 8
+  BEAM_SIZE: 4
