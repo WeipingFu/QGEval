@@ -30,23 +30,23 @@ The average annotation scores of each QG system over eight dimensions are shown 
 We implemented 15 metrics for re-evaluation, they are:
 | **Metrics**                | **Paper** | **Code** |
 |-----------------------------|----------|-----------|
-| BLEU-4            | link  |  link   |
-| ROUGE-L     | link   | link   | 
-| METEOR    | link  | link     | 
-| BERTScore       | link   | link     | 
-| MoverScore      | link   | link     | 
-| BLEURT | link    | link     |
-| BARTScore-ref| link    | link     |
-| GPTScore-ref        | link  | link   | 
-| Q-BLEU4       | link  | link   |
-| QSTS    | link    | link   | 
-| BARTScore-src   | link| link     | 
-| GPTScore-src | link    | link     |
-| QRelScore   | link | link | 
-| UniEval| link | link | 
-| RQUGE  | link   | link | 
+| BLEU-4            | [BLEU: a Method for Automatic Evaluation of Machine Translation](https://aclanthology.org/P02-1040.pdf)  |  [link])(https://www.nltk.org/_modules/nltk/translate/bleu_score.html)   |
+| ROUGE-L     | [ROUGE: A Package for Automatic Evaluation of Summaries](https://aclanthology.org/W04-1013.pdf)   | [link](https://github.com/google-research/google-research/tree/master/rouge)   | 
+| METEOR    | [METEOR: An Automatic Metric for MT Evaluation with Improved Correlation with Human Judgments](https://aclanthology.org/W05-0909.pdf)  | [link](https://www.nltk.org/api/nltk.translate.meteor_score.html) | 
+| BERTScore       | [BERTScore: Evaluating Text Generation with BERT](https://openreview.net/pdf?id=SkeHuCVFDr)   | [link](https://github.com/Tiiiger/bert_score)     | 
+| MoverScore      | [MoverScore: Text Generation Evaluating with Contextualized Embeddings and Earth Mover Distance](https://aclanthology.org/D19-1053.pdf)   | [link](https://github.com/AIPHES/emnlp19-moverscore)     | 
+| BLEURT | [BLEURT: Learning Robust Metrics for Text Generation](https://aclanthology.org/2020.acl-main.704.pdf)    | [link](https://github.com/google-research/bleurt)     |
+| BARTScore-ref| [BARTScore: Evaluating Generated Text as Text Generation](https://arxiv.org/pdf/2106.11520.pdf)    | [link](https://github.com/neulab/BARTScore)     |
+| GPTScore-ref        | [GPTScore: Evaluate as You Desire](https://arxiv.org/pdf/2302.04166.pdf)  | [link](https://github.com/jinlanfu/GPTScore)   | 
+| Q-BLEU4       | [Towards a Better Metric for Evaluating Question Generation Systems](https://aclanthology.org/D18-1429.pdf)  | [link](https://github.com/PrekshaNema25/Answerability-Metric)   |
+| QSTS    | [QSTS: A Question-Sensitive Text Similarity Measure for Question Generation](https://aclanthology.org/2022.coling-1.337.pdf)    | [link](https://github.com/WeipingFu/QGEval/tree/main/metrics/QSTS)   | 
+| BARTScore-src   | [BARTScore: Evaluating Generated Text as Text Generation](https://arxiv.org/pdf/2106.11520.pdf) | [link](https://github.com/neulab/BARTScore)     | 
+| GPTScore-src | [GPTScore: Evaluate as You Desire](https://arxiv.org/pdf/2302.04166.pdf)    | [link](https://github.com/jinlanfu/GPTScore)     |
+| QRelScore   | [QRelScore: Better Evaluating Generated Questions with Deeper Understanding of Context-aware Relevance](https://aclanthology.org/2022.emnlp-main.37.pdf) | [link](https://github.com/Robert-xiaoqiang/QRelScore) | 
+| UniEval| [Towards a Unified Multi-Dimensional Evaluator for Text Generation](https://aclanthology.org/2022.emnlp-main.131.pdf) | [link](https://github.com/maszhongming/UniEval) | 
+| RQUGE  | [RQUGE: Reference-Free Metric for Evaluating Question Generation by Answering the Question](https://aclanthology.org/2023.findings-acl.428.pdf)   | [link](https://github.com/alirezamshi/RQUGE) | 
 
 We share the results of each metric on each generated question in [data/metric_result.xlsx](https://github.com/WeipingFu/QGEval/blob/main/data/metric_result.xlsx).
 
 ## Citation
-<u>2.732</u> 
+
