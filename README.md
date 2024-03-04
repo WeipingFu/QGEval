@@ -30,7 +30,7 @@ The average annotation scores of each QG system over eight dimensions are shown 
 We implemented 15 metrics for re-evaluation, they are:
 | **Metrics**                | **Paper** | **Code** |
 |-----------------------------|----------|-----------|
-| BLEU-4            | [BLEU: a Method for Automatic Evaluation of Machine Translation](https://aclanthology.org/P02-1040.pdf)  |  [link])(https://www.nltk.org/_modules/nltk/translate/bleu_score.html)   |
+| BLEU-4            | [BLEU: a Method for Automatic Evaluation of Machine Translation](https://aclanthology.org/P02-1040.pdf)  |  [link](https://www.nltk.org/_modules/nltk/translate/bleu_score.html)   |
 | ROUGE-L     | [ROUGE: A Package for Automatic Evaluation of Summaries](https://aclanthology.org/W04-1013.pdf)   | [link](https://github.com/google-research/google-research/tree/master/rouge)   | 
 | METEOR    | [METEOR: An Automatic Metric for MT Evaluation with Improved Correlation with Human Judgments](https://aclanthology.org/W05-0909.pdf)  | [link](https://www.nltk.org/api/nltk.translate.meteor_score.html) | 
 | BERTScore       | [BERTScore: Evaluating Text Generation with BERT](https://openreview.net/pdf?id=SkeHuCVFDr)   | [link](https://github.com/Tiiiger/bert_score)     | 
