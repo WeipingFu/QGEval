@@ -22,7 +22,7 @@ The average annotation scores of each QG system over eight dimensions are shown 
 | M12 - GPT-3.5-Turbo-fewshot | 2.972    | 2.927     | <span style="text-decoration:underline;">2.858</span>   | 2.995    | **2.962**| **2.852**| 2.757    | <span style="text-decoration:underline;">2.330</span>   |
 | M13 - GPT-4-Turbo-fewshot   | **2.988**| **2.987** | 2.897     | 2.992    | **2.947**| **2.922**| **2.813**| **2.772** |
 | M14 - GPT-3.5-Turbo-zeroshot| **2.995**| **2.977** | 2.915     | 2.992    | <span style="text-decoration:underline;">2.913</span>   | 2.823    | 2.712    | <span style="text-decoration:underline;">2.157</span>   |
-| M15 - GPT-4-Turbo-zeroshot  | 2.983    | **2.990** | 2.943     | <span style="text-decoration:underline;"2.970</span>  | 2.932     | **2.883**| **2.785**| 2.723     |
+| M15 - GPT-4-Turbo-zeroshot  | 2.983    | **2.990** | 2.943     | <span style="text-decoration:underline;">2.970</span>  | 2.932     | **2.883**| **2.785**| 2.723     |
 | **Avg.**                    | 2.967    | 2.910     | 2.917     | 2.991    | 2.930     | 2.794   | 2.700 | 2.587 |
 
 
