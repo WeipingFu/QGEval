@@ -14,8 +14,6 @@ import glove_similarity
 from nltk.corpus import stopwords
 
 
-# sys.path.append('/data/fuweiping/workspace/evalQG/baselines/QSTS/embeddings/')
-
 
 class QSTS:
     def __init__(self, wikiterms_glvembeddingsf):
@@ -208,6 +206,6 @@ if __name__=="__main__":
         else:
             qt = False
         
-        wikiterms_glvembeddingsf='/data/fuweiping/workspace/evalQG/baselines/QSTS/embeddings/glove.840B.300d.wiki_ss.pkl'
+        wikiterms_glvembeddingsf='../../embeddings/glove.840B.300d.wiki_ss.pkl'
         qsts = QSTS(wikiterms_glvembeddingsf)
         qsts.computeQSimilarity(rfile, hfile, ofile, qt)

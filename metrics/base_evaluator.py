@@ -158,16 +158,7 @@ def main():
     pd.DataFrame(res).to_excel('result.xlsx', index=False)
 
 if __name__ == "__main__":
-    # hypo_path = '/data/fuweiping/workspace/github/nlg-eval/examples/hyp.txt'
-    # ref_path_list = ['/data/fuweiping/workspace/github/nlg-eval/examples/ref1.txt',
-    # # '/data/fuweiping/workspace/github/nlg-eval/examples/ref2.txt'
-    # ]
-    # hypos = ['What causes underbids?']
-    # refs_list = [["What is an underbid?"]]
-    # nlg_evaluator = NLGEvaluator(None, None, hypos, refs_list)
-    # result = nlg_evaluator.apply(score_names=['s-bleu', 'meteor', 'rouge_L', 'bert_score'])
-    # print(result)
-    # print(result['rouge_L']['ref_1'][0]['f1'])
+    
     os.environ["CUDA_VISIBLE_DEVICES"] = '5'
     main()
 

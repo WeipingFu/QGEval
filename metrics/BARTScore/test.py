@@ -1,6 +1,6 @@
 from bart_score import BARTScorer
 import pandas as pd
-bart_scorer = BARTScorer(device='cuda:0', checkpoint='/data/fuweiping/hjx/BARTScore')
+bart_scorer = BARTScorer(device='cuda:0', checkpoint='./model')
 bart_scorer.load(path='bart_score.pth')
 file_path = './score.xlsx'
 df = pd.read_excel(file_path, sheet_name = "Sheet1")

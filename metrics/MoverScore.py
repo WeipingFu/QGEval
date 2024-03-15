@@ -40,7 +40,6 @@ if __name__ == "__main__":
     os.environ["CUDA_VISIBLE_DEVICES"] = '7'
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
     res_path = 'test.xlsx'
-    # res_path = '/data/fuweiping/workspace/evalQG/answerable_eval/data/test/narrativeqa/gpt-3.5-turbo.xlsx'
     data = pd.read_excel(res_path)
     # scores = []
     # for idx, row in tqdm(data.iterrows(), total=data.shape[0]):

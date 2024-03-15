@@ -64,7 +64,3 @@ def predict_xxl(few_shot_path, test_path, result_save_path, name, k=8):
     pd.DataFrame(result).to_csv(result_save_path, index=False)
 
 
-few_shot_path = '/data/fuweiping/workspace/baseQG/answer_aware/data/few-shot/squad1.1-few.json'
-test_path = '/data/fuweiping/workspace/evalQG/answerable_eval/data/test/squad1.1.json'
-result_save_path = '/data/fuweiping/workspace/baseQG/answer_aware/model/t5-11b/squad1.1/result/prediction.csv'
-predict_xxl(few_shot_path, test_path, result_save_path, 'squad1.1', k=0)
