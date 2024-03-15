@@ -27,6 +27,7 @@ Example of instances.
       ...
   ]
 }
+```
 
 The average annotation scores of each QG system over eight dimensions are shown in the below table.
 | **Systems**                | **Flu.** | **Clar.** | **Conc.** | **Rel.** | **Cons.** | **Ans.** | **AnsC.** | **Avg.** | 
