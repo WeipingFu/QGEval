@@ -5,6 +5,29 @@ Resources for paper - QGEval: A Benchmark for Question Generation Evaluation
 We share the generated questions from 15 QG systems with averaged annotation scores of three annotators in [data/scores.xlsx](./data/scores.xlsx), and the instances integrated by passages are in [data/instances.json](./data/instances.json).
 We also share the annotation result of each annotator in [data/annotation result](./data/annotation%20result).
 
+Example of instances.
+```json
+{
+  "id": "572882242ca10214002da423",
+  "passage": "... The publication of a Taoist text inscribed with the name of Töregene Khatun, Ögedei's wife, ...",
+  "reference": "Who was Ögedei's wife?"
+  "answer": "Töregene Khatun",
+  "questions": [
+      {
+        "prediction": "Who was the author of the Taoist text inscribed with the name of?",
+        "source": "SQuAD_BART-base_finetune",
+        "fluency": 3.0,
+        "clarity": 2.6667,
+        "conciseness": 3.0,
+        "relevance": 3.0,
+        "consistency": 2.6667,
+        "answerability": 1.0,
+        "answer_consistency": 1.0
+      },
+      ...
+  ]
+}
+
 The average annotation scores of each QG system over eight dimensions are shown in the below table.
 | **Systems**                | **Flu.** | **Clar.** | **Conc.** | **Rel.** | **Cons.** | **Ans.** | **AnsC.** | **Avg.** | 
 |-----------------------------|----------|-----------|-----------|----------|-----------|----------|----------|-----------|
