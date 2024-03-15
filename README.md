@@ -5,24 +5,48 @@ Resources for paper - QGEval: A Benchmark for Question Generation Evaluation
 We share the generated questions from 15 QG systems with averaged annotation scores of three annotators in [data/scores.xlsx](./data/scores.xlsx), and the instances integrated by passages are in [data/instances.json](./data/instances.json).
 We also share the annotation result of each annotator in [data/annotation result](./data/annotation%20result).
 
+Example of instances.
+```json
+{
+  "id": "572882242ca10214002da423",
+  "passage": "... The publication of a Taoist text inscribed with the name of Töregene Khatun, Ögedei's wife, ...",
+  "reference": "Who was Ögedei's wife?"
+  "answer": "Töregene Khatun",
+  "questions": [
+      {
+        "prediction": "Who was the author of the Taoist text inscribed with the name of?",
+        "source": "SQuAD_BART-base_finetune",
+        "fluency": 3.0,
+        "clarity": 2.6667,
+        "conciseness": 3.0,
+        "relevance": 3.0,
+        "consistency": 2.6667,
+        "answerability": 1.0,
+        "answer_consistency": 1.0
+      },
+      // ... 14 more questions
+  ]
+}
+```
+
 The average annotation scores of each QG system over eight dimensions are shown in the below table.
 | **Systems**                | **Flu.** | **Clar.** | **Conc.** | **Rel.** | **Cons.** | **Ans.** | **AnsC.** | **Avg.** | 
 |-----------------------------|----------|-----------|-----------|----------|-----------|----------|----------|-----------|
-| M1 - Reference              | 2.968    | 2.930     | **2.998** | 2.993    | 2.923     | 2.832    | **2.768** |
-| M2 - BART-base-finetune     | 2.958    | 2.882     | 2.898     | 2.995    | 2.923     | <u>2.732</u>  | 2.588     |
-| M3 - BART-large-finetune    | <span style="text-decoration:underline;">2.933</span>  | 2.915     | <span style="text-decoration:underline;">2.828</span>   | 2.995    | 2.935     | 2.825    | **2.737** |
-| M4 - T5-base-finetune       | 2.972    | 2.923     | 2.922     | **3.000**| <span style="text-decoration:underline;">2.917</span>   | 2.788    | 2.652     |
-| M5 - T5-large-finetune      | 2.978    | 2.930     | 2.907     | 2.995    | 2.933     | 2.795    |  2.720     |
-| M6 - Flan-T5-base-finetune | 2.963    | 2.888     | 2.938     | **2.998**| 2.925     | 2.775    | 2.665     |
-| M7 - Flan-T5-large-finetune| 2.982    | 2.902     | 2.895     | 2.995    | **2.950**| 2.818    | 2.727     |
-| M8 - Flan-T5-XL-LoRA        | <span style="text-decoration:underline;">2.913</span>  | <span style="text-decoration:underline;">2.843</span>   | <span style="text-decoration:underline;">2.880</span>   | 2.997    | 2.928     | 2.770    | 2.667     |
-| M9 - Flan-T5-XXL-LoRA       | <span style="text-decoration:underline;">2.938</span>  | <span style="text-decoration:underline;">2.848</span>   | 2.907     | **3.000**| 2.942     | 2.755    | 2.677     |
-| M10 - Flan-T5-XL-fewshot    | 2.975    | <span style="text-decoration:underline;">2.820</span>   | **2.985** | <span style="text-decoration:underline;">2.955</span>  | <span style="text-decoration:underline;">2.908</span>   | <span style="text-decoration:underline;">2.652</span>  | <span style="text-decoration:underline;">2.193</span>   |
-| M11 - Flan-T5-XXL-fewshot   | **2.987**| 2.882     | **2.990** | <span style="text-decoration:underline;">2.988</span>  | 2.918     | <span style="text-decoration:underline;">2.685</span>  |  2.430     |
-| M12 - GPT-3.5-Turbo-fewshot | 2.972    | 2.927     | <span style="text-decoration:underline;">2.858</span>   | 2.995    | **2.962**| **2.852**|  <span style="text-decoration:underline;">2.330</span>   |
-| M13 - GPT-4-Turbo-fewshot   | **2.988**| **2.987** | 2.897     | 2.992    | **2.947**| **2.922**| **2.772** |
-| M14 - GPT-3.5-Turbo-zeroshot| **2.995**| **2.977** | 2.915     | 2.992    | <span style="text-decoration:underline;">2.913</span>   | 2.823    | <span style="text-decoration:underline;">2.157</span>   |
-| M15 - GPT-4-Turbo-zeroshot  | 2.983    | **2.990** | 2.943     | <span style="text-decoration:underline;">2.970</span>  | 2.932     | **2.883**| 2.723     |
+| M1 - Reference              | 2.968    | 2.930     | **2.998** | 2.993    | 2.923     | 2.832    | **2.768** | **2.916** |
+| M2 - BART-base-finetune     | 2.958    | 2.882     | 2.898     | 2.995    | 2.923     | <u>2.732</u>  | 2.588     | 2.854 |
+| M3 - BART-large-finetune    | <u>2.933</u>  | 2.915     | <u>2.828</u>   | 2.995    | 2.935    | 2.825    | **2.737** | 2.881  |
+| M4 - T5-base-finetune       | 2.972    | 2.923     | 2.922     | **3.000**| <u>2.917</u>   | 2.788    | 2.652     | 2.882 |
+| M5 - T5-large-finetune      | 2.978    | 2.930     | 2.907     | 2.995    | 2.933     | 2.795    |  2.720    | 2.894 |
+| M6 - Flan-T5-base-finetune | 2.963    | 2.888     | 2.938     | **2.998**| 2.925     | 2.775    | 2.665     | 2.879 |
+| M7 - Flan-T5-large-finetune| 2.982    | 2.902     | 2.895     | 2.995    | **2.950**| 2.818    | 2.727     | 2.895 |
+| M8 - Flan-T5-XL-LoRA        | <u>2.913</u>  | <u>2.843</u>   | <u>2.880</u>   | 2.997    | 2.928     | 2.770    | 2.667     | 2.857 |
+| M9 - Flan-T5-XXL-LoRA       | <u>2.938</u>  | <u>2.848</u>   | 2.907     | **3.000**| 2.942     | 2.755    | 2.677     | 2.867 |
+| M10 - Flan-T5-XL-fewshot    | 2.975    | <u>2.820</u>   | **2.985** | <u>2.955</u>  | <u>2.908</u>   | <u>2.652</u>  | <u>2.193</u>   | <u>2.784</u> |
+| M11 - Flan-T5-XXL-fewshot   | **2.987**| 2.882     | **2.990** | <u>2.988</u>  | 2.918     | <u>2.685</u>  |  2.430     | <u>2.840</u> |
+| M12 - GPT-3.5-Turbo-fewshot | 2.972    | 2.927     | <u>2.858</u>   | 2.995    | **2.962**| **2.852**|  <u>2.330</u>   | 2.842 |
+| M13 - GPT-4-Turbo-fewshot   | **2.988**| **2.987** | 2.897     | 2.992    | **2.947**| **2.922**| **2.772** | **2.929** |
+| M14 - GPT-3.5-Turbo-zeroshot| **2.995**| **2.977** | 2.915     | 2.992    | <u>2.913</u>   | 2.823    | <u>2.157</u>   | <u>2.825</u> |
+| M15 - GPT-4-Turbo-zeroshot  | 2.983    | **2.990** | 2.943     | <u>2.970</u>  | 2.932     | **2.883**| 2.723     | **2.918** |
 | Avg.                  | 2.967    | 2.910     | 2.917     | 2.991    | 2.930     | 2.794   | 2.587 |
 
 
