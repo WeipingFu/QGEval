@@ -24,7 +24,7 @@ Example of instances.
         "answerability": 1.0,
         "answer_consistency": 1.0
       },
-      //...
+      // ...
   ]
 }
 ```
