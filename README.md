@@ -20,7 +20,7 @@ Example of instances.
         "clarity": 2.6667,
         "conciseness": 3.0,
         "relevance": 3.0,
-        "consistency": 2.6667,
+        "consistency": 2.0,
         "answerability": 1.0,
         "answer_consistency": 1.0
       },
@@ -33,21 +33,21 @@ The average annotation scores of each QG system over eight dimensions are shown 
 | **Systems**                | **Flu.** | **Clar.** | **Conc.** | **Rel.** | **Cons.** | **Ans.** | **AnsC.** | **Avg.** | 
 |-----------------------------|----------|-----------|-----------|----------|-----------|----------|----------|-----------|
 | M1 - Reference              | 2.968    | 2.930     | **2.998** | 2.993    | 2.923     | 2.832    | **2.768** | **2.916** |
-| M2 - BART-base-finetune     | 2.958    | 2.882     | 2.898     | 2.995    | 2.923     | <u>2.732</u>  | 2.588     | 2.854 |
-| M3 - BART-large-finetune    | <u>2.933</u>  | 2.915     | <u>2.828</u>   | 2.995    | 2.935    | 2.825    | **2.737** | 2.881  |
+| M2 - BART-base-finetune     | 2.958    | 2.882     | 2.898     | 2.995    | 2.920     | <u>2.732</u>  | 2.588     | 2.853 |
+| M3 - BART-large-finetune    | <u>2.932</u>  | 2.915     | <u>2.828</u>   | 2.995    | 2.935    | 2.825    | **2.737** | 2.881  |
 | M4 - T5-base-finetune       | 2.972    | 2.923     | 2.922     | **3.000**| <u>2.917</u>   | 2.788    | 2.652     | 2.882 |
 | M5 - T5-large-finetune      | 2.978    | 2.930     | 2.907     | 2.995    | 2.933     | 2.795    |  2.720    | 2.894 |
 | M6 - Flan-T5-base-finetune | 2.963    | 2.888     | 2.938     | **2.998**| 2.925     | 2.775    | 2.665     | 2.879 |
 | M7 - Flan-T5-large-finetune| 2.982    | 2.902     | 2.895     | 2.995    | **2.950**| 2.818    | 2.727     | 2.895 |
-| M8 - Flan-T5-XL-LoRA        | <u>2.913</u>  | <u>2.843</u>   | <u>2.880</u>   | 2.997    | 2.928     | 2.770    | 2.667     | 2.857 |
-| M9 - Flan-T5-XXL-LoRA       | <u>2.938</u>  | <u>2.848</u>   | 2.907     | **3.000**| 2.942     | 2.755    | 2.677     | 2.867 |
+| M8 - Flan-T5-XL-LoRA        | <u>2.913</u>  | <u>2.843</u>   | <u>2.880</u>   | 2.997    | 2.928     | 2.772    | 2.667     | 2.857 |
+| M9 - Flan-T5-XXL-LoRA       | <u>2.938</u>  | <u>2.848</u>   | 2.907     | **3.000**| 2.943    | 2.757    | 2.678     | 2.867 |
 | M10 - Flan-T5-XL-fewshot    | 2.975    | <u>2.820</u>   | **2.985** | <u>2.955</u>  | <u>2.908</u>   | <u>2.652</u>  | <u>2.193</u>   | <u>2.784</u> |
-| M11 - Flan-T5-XXL-fewshot   | **2.987**| 2.882     | **2.990** | <u>2.988</u>  | 2.918     | <u>2.685</u>  |  2.430     | <u>2.840</u> |
-| M12 - GPT-3.5-Turbo-fewshot | 2.972    | 2.927     | <u>2.858</u>   | 2.995    | **2.962**| **2.852**|  <u>2.330</u>   | 2.842 |
+| M11 - Flan-T5-XXL-fewshot   | **2.987**| 2.882     | **2.990** | <u>2.988</u>  | 2.920     | <u>2.687</u>  |  2.432     | <u>2.841</u> |
+| M12 - GPT-3.5-Turbo-fewshot | 2.972    | 2.927     | <u>2.858</u>   | 2.995    | **2.955**| **2.850**|  <u>2.335</u>   | 2.842 |
 | M13 - GPT-4-Turbo-fewshot   | **2.988**| **2.987** | 2.897     | 2.992    | **2.947**| **2.922**| **2.772** | **2.929** |
-| M14 - GPT-3.5-Turbo-zeroshot| **2.995**| **2.977** | 2.915     | 2.992    | <u>2.913</u>   | 2.823    | <u>2.157</u>   | <u>2.825</u> |
+| M14 - GPT-3.5-Turbo-zeroshot| **2.995**| **2.977** | 2.913     | 2.992    | <u>2.917</u>   | 2.823    | <u>2.157</u>   | <u>2.825</u> |
 | M15 - GPT-4-Turbo-zeroshot  | 2.983    | **2.990** | 2.943     | <u>2.970</u>  | 2.932     | **2.883**| 2.723     | **2.918** |
-| Avg.                  | 2.967    | 2.910     | 2.917     | 2.991    | 2.930     | 2.794   | 2.587 |
+| Avg.                  | 2.967    | 2.910     | 2.917     | 2.991    | 2.930     | 2.794   | 2.588 |
 
 
 ## Metrics
@@ -73,6 +73,8 @@ We implemented 15 metrics for re-evaluation, they are:
 We share the results of each metric on each generated question in [data/metric_result.xlsx](https://github.com/WeipingFu/QGEval/blob/main/data/metric_result.xlsx).
 Results of LLM-based metrics on answerability are in [data/test_answerability.xlsx](./data/test_answerability.xlsx).
 
+### Codes
+To run the metrics, modify and apply [metrics/metrics.py](./metrics/metrics.py).
 [Notice] When applying metric codes, please pay attention to modifying the model file location of each metric in the code.
 
 ## Citation
