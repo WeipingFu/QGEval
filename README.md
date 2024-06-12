@@ -79,7 +79,7 @@ To run the metrics, modify and apply [metrics/metrics.py](./metrics/metrics.py).
 
 ## Citation
 Please cite:
-```json
+```python
 @misc{fu2024qgeval,
       title={QGEval: A Benchmark for Question Generation Evaluation}, 
       author={Weiping Fu and Bifan Wei and Jianxiang Hu and Zhongmin Cai and Jun Liu},
