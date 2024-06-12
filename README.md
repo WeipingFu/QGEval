@@ -78,4 +78,14 @@ To run the metrics, modify and apply [metrics/metrics.py](./metrics/metrics.py).
 [Notice] When applying metric codes, please pay attention to modifying the model file location of each metric in the code.
 
 ## Citation
-
+Please cite:
+'''
+@misc{fu2024qgeval,
+      title={QGEval: A Benchmark for Question Generation Evaluation}, 
+      author={Weiping Fu and Bifan Wei and Jianxiang Hu and Zhongmin Cai and Jun Liu},
+      year={2024},
+      eprint={2406.05707},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+'''
