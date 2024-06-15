@@ -73,7 +73,11 @@ We implemented 15 metrics for re-evaluation, they are:
 We share the results of each metric on each generated question in [data/metric_result.xlsx](https://github.com/WeipingFu/QGEval/blob/main/data/metric_result.xlsx).
 Results of LLM-based metrics on answerability are in [data/test_answerability.xlsx](./data/test_answerability.xlsx).
 
-### Codes
+## Codes
+### Question Generation
+The codes for QG are in [qg](./qg). Codes for training and predicting are provided, run the code file for specific models. For example, if you want to train a T5-based QG model, run the code file [T5.py](./qg/T5.py).
+
+### Automatic Metrics
 To run the metrics, modify and apply [metrics/metrics.py](./metrics/metrics.py).
 [Notice] When applying metric codes, please pay attention to modifying the model file location of each metric in the code.
 

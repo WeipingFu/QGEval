@@ -111,7 +111,7 @@ def get_metrics(hypos, refs_list, contexts, answers, score_names):
     if 'GPTScore-ref' in score_names or 'GPTScore-src' in score_names:
         print('GPTScore', '#'*50)
         from gptscore import FlanScorerMod
-        model_path = '/data1/fwp/pretrained_model/flan-t5-xxl'
+        model_path = 'google/flan-t5-xxl'
         scorer = FlanScorerMod(model_path, device=device)
         if 'GPTScore-ref' in score_names:
             print('GPTScore-ref', '#'*50)
