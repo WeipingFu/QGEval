@@ -84,18 +84,21 @@ The codes and the data for Question Generation are in [qg](./qg), you can train 
 3. run `python process.py` to process data
 4. run the code file for specific models to train. For example, run `python T5.py` to train your T5-based QG model.
 
+
 ### Automatic Metrics
 The codes for Automatic Metrics are in [metric](./metric). 
+
 if you want to get **our metrics(QGeval)** to evaluate your questions:
 1. cd ./metric
 2. run `pip install -r requirements.txt` to install the required packages
 3. run `python geval.py` to get our metric evaluation result
 
+
 if you want to get **other automatic metrics**(e.g. BLEU-4, ROUGE-L, METEOR, BERTScore) to evaluate your questions:
 1. cd ./metric
 2. run `pip install -r requirements.txt` to install the required packages
 3. run `python metrics.py` to get your chosen metrics evaluation result
-[Notice] When applying metric codes, please pay attention to modifying the model file location of each metric in the code.
+[Notice] When applying metric codes, please modify the model file location of each metric in the code.
 
 ## Citation
 Please cite:
