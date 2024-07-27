@@ -74,11 +74,11 @@ We share the results of each metric on each generated question in [data/metric_r
 Results of LLM-based metrics on answerability are in [data/test_answerability.xlsx](./data/test_answerability.xlsx).
 
 ## Models
-You can find our trained qg model at (https://huggingface.co/hujianxiang/QG_EVAL).
+You can find our trained QG model at (https://huggingface.co/hujianxiang/QG_EVAL).
 
 ## Quick Start
 ### Question Generation
-The codes and the data for Question Generation are in [qg](./qg), train your own QG model by these steps:
+- The codes and the data for **Question Generation** are in [qg](./qg), train your own QG model by these steps:
 1. cd ./qg
 2. run `pip install -r requirements.txt` to install the required packages
 3. run `python process.py` to process data
