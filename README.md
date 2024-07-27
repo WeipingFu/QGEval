@@ -94,10 +94,12 @@ The codes for Automatic Metrics are in [metric](./metric).
 3. run `python geval.py` to get our metric evaluation result
 
 
+
 - use **other automatic metrics**(e.g. BLEU-4) to evaluate your questions:
 1. cd ./metric
 2. run `pip install -r requirements.txt` to install the required packages
 3. run `python metrics.py` to get your chosen metrics evaluation result
+
 [Notice] When applying metric codes, please modify the model file location of each metric in the code.
 
 ## Citation
