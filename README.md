@@ -74,28 +74,24 @@ We share the results of each metric on each generated question in [data/metric_r
 Results of LLM-based metrics on answerability are in [data/test_answerability.xlsx](./data/test_answerability.xlsx).
 
 ## Models
-You can find our trained model at (https://huggingface.co/hujianxiang/QG_EVAL).
+You can find our trained qg model at (https://huggingface.co/hujianxiang/QG_EVAL).
 
 ## Quick Start
 ### Question Generation
-The codes and the data for Question Generation are in [qg](./qg), you can train your own QG model by these steps:
+The codes and the data for Question Generation are in [qg](./qg), train your own QG model by these steps:
 1. cd ./qg
 2. run `pip install -r requirements.txt` to install the required packages
 3. run `python process.py` to process data
 4. run the code file for specific models to train. For example, run `python T5.py` to train your T5-based QG model.
 
-
-### Automatic Metrics
-The codes for Automatic Metrics are in [metric](./metric). 
-
-- use **our metrics(QGeval)** to evaluate your questions:
+### QGeval Metric Evaluation
+- The codes for **our metrics(QGeval)** are in [metric](./metric), to evaluate your questions by these steps:
 1. cd ./metric
 2. run `pip install -r requirements.txt` to install the required packages
 3. run `python geval.py` to get our metric evaluation result
 
-
-
-- use **other automatic metrics**(e.g. BLEU-4) to evaluate your questions:
+###  Other Automatic Metrics Evaluation
+- The codes for **other Automatic metrics(e.g. BLEU-4)** are in [metric](./metric), to evaluate your questions by these steps:
 1. cd ./metric
 2. run `pip install -r requirements.txt` to install the required packages
 3. run `python metrics.py` to get your chosen metrics evaluation result
