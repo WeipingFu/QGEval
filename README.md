@@ -79,7 +79,8 @@ You can find our trained QG model at (https://huggingface.co/QGEval/QG_EVAL).
 ## How to use
 Our codes provide the ability to `evaluate automatic metrics`, you can also use our codes to `train Question Generation Model` and `calculate automatic metrics`.
 ### Evaluation of Automatic Metrics
-Take the evaluation of QRelScore as an example, you can use the QGEval benchmark to evaluate QRelScore by these steps:
+- The codes for **other Automatic metrics(e.g. BLEU-4)** are in [metric](./metric)
+- Take the evaluation of QRelScore as an example, you can use the QGEval benchmark to evaluate QRelScore by these steps:
 1. prepare data, you can get the QGEval benchmark at [data/scores.xlsx](./data/scores.xlsx)
 2. cd ./metric
 3. run `pip install -r requirements.txt` to install the required packages
@@ -109,7 +110,7 @@ Find more details in [metric](./metric).
 - The codes for **other Automatic metrics(e.g. BLEU-4)** are in [metric](./metric), evaluate questions by these steps:
 1. cd ./metric
 2. run `pip install -r requirements.txt` to install the required packages
-3. run `python metrics.py` to get your chosen metrics evaluation result
+3. run `python metrics.py` to get your chosen metrics evaluation result.
 
 Find more details in [metric](./metric).
 
