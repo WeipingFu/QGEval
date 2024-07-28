@@ -1,10 +1,11 @@
 ## How to use
 Our codes provide the ability to `evaluate automatic metrics` which concludes the ability to `calculate automatic metrics`. Please follow these steps to calculate automatic QG metrics and evaluate automatic metrics on our benchmark.
 
-1. prepare data for Question Generation, you can use the hotpotQA dataset and squad1.1 dataset which are provided at [./data](./data), or you can use your dataset which provides passages, questions, and answers.
-2. check your Python environment or just run `pip install -r requirements.txt` to install the required packages.
+1. prepare data for Question Generation evaluation, you can use your QG model to generate the data, which should provide passages, answers, and targets from the QG dataset(data in [data/scores.xlsx](data/scores.xlsx)) and predictions from the generated results. The format can refer to [data/scores.xlsx](data/scores.xlsx).
+2. check your Python environment or just run `pip install -r requirements.txt` to install the required packages.reference	passage	answer	prediction
+
 3. the data should be processed first, run `python process.py` to  process the data, and you may change the data dictionary in the specific class in [./process.py](./process.py) if you change the dataset dictionary, and change the model you want to train in the main function in [./process.py](./process.py).
-4. after processing the data, try to train your model. We provide methods to train T5/FLAN-T5/BART-based QG model. You may run the code file for specific models to train. For example, run `python T5.py` to train your T5-based QG model
+4. calculate automatic metrics. You may run the code file for specific models to train. For example, run `python T5.py` to train your T5-based QG model. `data_path` in each file should be changed into your data path.
 
 ## How to use
 Our codes provide the ability to `evaluate automatic metrics` `calculate automatic metrics`.
