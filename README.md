@@ -83,18 +83,21 @@ You can find our trained QG model at (https://huggingface.co/hujianxiang/QG_EVAL
 2. run `pip install -r requirements.txt` to install the required packages
 3. run `python process.py` to process data
 4. run the code file for specific models to train. For example, run `python T5.py` to train your T5-based QG model.
+Find more details in .
 
 ### QGeval Metric Evaluation
-- The codes for **our metrics(QGeval)** are in [metric](./metric), evaluate your questions by these steps:
+- The codes for **QGeval** are in [metric](./metric), evaluate your questions by these steps:
 1. cd ./metric
 2. run `pip install -r requirements.txt` to install the required packages
 3. run `python geval.py` to get our metric evaluation result
+Find more details in .
 
 ###  Other Automatic Metrics Evaluation
 - The codes for **other Automatic metrics(e.g. BLEU-4)** are in [metric](./metric), evaluate your questions by these steps:
 1. cd ./metric
 2. run `pip install -r requirements.txt` to install the required packages
 3. run `python metrics.py` to get your chosen metrics evaluation result
+Find more details in .
 
 [Notice] When applying metric codes, please modify the model file location of each metric in the code.
 
