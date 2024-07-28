@@ -77,9 +77,9 @@ Results of LLM-based metrics on answerability are in [data/test_answerability.xl
 You can find our trained QG model at (https://huggingface.co/QGEval/QG_EVAL).
 
 ## How to use
-Our codes provide the ability to `evaluate automatic metrics`, you can also use our codes to `train Question Generation Model` and `calculate automatic metrics`.
+Our codes provide the ability to `evaluate automatic metrics`, you can also use our codes to `train Question Generation model` and `calculate automatic metrics`.
 ### Evaluation of Automatic Metrics
-- The codes for **other Automatic metrics(e.g. BLEU-4)** are in [metric](./metric)
+- The codes for **Evaluation of Automatic Metrics** are in [metric](./metric)
 - Take the evaluation of QRelScore as an example, you can use the QGEval benchmark to evaluate QRelScore by these steps:
 1. prepare data, you can get the QGEval benchmark at [data/scores.xlsx](./data/scores.xlsx)
 2. cd ./metric
@@ -100,7 +100,7 @@ Find more details in [qg/readme](./qg/readme).
 
 ###  Automatic Metrics Calculation
 - The codes for **Automatic metrics Calculation(e.g. BLEU-4)** are in [metric](./metric), calculate automatic metrics by these steps:
-1. prepare data, you can get the question generation dataset at [qg/data](./qg/data) or you can prepare data yourself
+1. prepare data, you can get the Question Generation dataset at [qg/data](./qg/data) or you can prepare data yourself
 2. cd ./metric
 3. run `pip install -r requirements.txt` to install the required packages
 4. run `python metrics.py` to get your chosen metrics evaluation result.
