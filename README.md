@@ -73,13 +73,30 @@ We implemented 15 metrics for re-evaluation, they are:
 We share the results of each metric on each generated question in [data/metric_result.xlsx](https://github.com/WeipingFu/QGEval/blob/main/data/metric_result.xlsx).
 Results of LLM-based metrics on answerability are in [data/test_answerability.xlsx](./data/test_answerability.xlsx).
 
-## Codes
-### Question Generation
-The codes for QG are in [qg](./qg). Codes for training and predicting are provided, run the code file for specific models. For example, if you want to train a T5-based QG model, run the code file [T5.py](./qg/T5.py).
+## Models
+You can find our trained QG model at (https://huggingface.co/hujianxiang/QG_EVAL).
 
-### Automatic Metrics
-To run the metrics, modify and apply [metrics/metrics.py](./metrics/metrics.py).
-[Notice] When applying metric codes, please pay attention to modifying the model file location of each metric in the code.
+## Quick Start
+### Question Generation
+- The codes and the data for **Question Generation** are in [qg](./qg), train your own QG model by these steps:
+1. cd ./qg
+2. run `pip install -r requirements.txt` to install the required packages
+3. run `python process.py` to process data
+4. run the code file for specific models to train. For example, run `python T5.py` to train your T5-based QG model.
+
+### QGeval Metric Evaluation
+- The codes for **our metrics(QGeval)** are in [metric](./metric), evaluate your questions by these steps:
+1. cd ./metric
+2. run `pip install -r requirements.txt` to install the required packages
+3. run `python geval.py` to get our metric evaluation result
+
+###  Other Automatic Metrics Evaluation
+- The codes for **other Automatic metrics(e.g. BLEU-4)** are in [metric](./metric), evaluate your questions by these steps:
+1. cd ./metric
+2. run `pip install -r requirements.txt` to install the required packages
+3. run `python metrics.py` to get your chosen metrics evaluation result
+
+[Notice] When applying metric codes, please modify the model file location of each metric in the code.
 
 ## Citation
 Please cite:
