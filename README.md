@@ -104,7 +104,9 @@ Find more details in [qg/readme](./qg/readme).
 2. cd ./metric
 3. run `pip install -r requirements.txt` to install the required packages
 4. run `python metrics.py` to get your chosen metrics evaluation result.
+
 [Notice] When applying metric codes, please modify the model file location of each metric in the code.
+
 Find more details in [metric/readme](./metric/readme).
 
 ## Citation
