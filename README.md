@@ -74,9 +74,21 @@ We share the results of each metric on each generated question in [data/metric_r
 Results of LLM-based metrics on answerability are in [data/test_answerability.xlsx](./data/test_answerability.xlsx).
 
 ## Models
-You can find our trained QG model at (https://huggingface.co/hujianxiang/QG_EVAL).
+You can find our trained QG model at (https://huggingface.co/QGEval/QG_EVAL).
 
-## Quick Start
+## How to use
+Our codes provide the ability to `evaluate automatic metrics`, you can also use our codes to `train Question Generation model` and `calculate automatic metrics`.
+### Evaluation of Automatic Metrics
+- The codes for **Evaluation of Automatic Metrics** are in [metric](./metric)
+- Take the evaluation of QRelScore as an example, you can use the QGEval benchmark to evaluate QRelScore by these steps:
+1. prepare data, you can get the QGEval benchmark at [data/scores.xlsx](./data/scores.xlsx)
+2. cd ./metric
+3. run `pip install -r requirements.txt` to install the required packages
+4. run `python grel.py` or `python metrics.py` to get QRelScore metric result
+5. run `python pearson.py` to obtain the Pearson correlation coefficient between the generated results and the labeled results.
+
+Find more details in [metric/readme](./metric/readme).
+
 ### Question Generation
 - The codes and the data for **Question Generation** are in [qg](./qg), train your own QG model by these steps:
 1. cd ./qg
@@ -84,19 +96,18 @@ You can find our trained QG model at (https://huggingface.co/hujianxiang/QG_EVAL
 3. run `python process.py` to process data
 4. run the code file for specific models to train. For example, run `python T5.py` to train your T5-based QG model.
 
-### QGeval Metric Evaluation
-- The codes for **our metrics(QGeval)** are in [metric](./metric), evaluate your questions by these steps:
-1. cd ./metric
-2. run `pip install -r requirements.txt` to install the required packages
-3. run `python geval.py` to get our metric evaluation result
+Find more details in [qg/readme](./qg/readme).
 
-###  Other Automatic Metrics Evaluation
-- The codes for **other Automatic metrics(e.g. BLEU-4)** are in [metric](./metric), evaluate your questions by these steps:
-1. cd ./metric
-2. run `pip install -r requirements.txt` to install the required packages
-3. run `python metrics.py` to get your chosen metrics evaluation result
+###  Automatic Metrics Calculation
+- The codes for **Automatic metrics Calculation(e.g. BLEU-4)** are in [metric](./metric), calculate automatic metrics by these steps:
+1. prepare data, you can get the Question Generation dataset at [qg/data](./qg/data) or you can prepare data yourself
+2. cd ./metric
+3. run `pip install -r requirements.txt` to install the required packages
+4. run `python metrics.py` to get your chosen metrics evaluation result.
 
 [Notice] When applying metric codes, please modify the model file location of each metric in the code.
+
+Find more details in [metric/readme](./metric/readme).
 
 ## Citation
 Please cite:
