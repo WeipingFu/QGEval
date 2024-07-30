@@ -5,9 +5,9 @@ import pandas as pd
 import re
 import random
 
-
+# prepare squad data for T5 series models
 class T5Squad:
-    def deal_squad(self):
+    def deal_squad(self, save_dir = './data/data_t5/squad1.1/'):
         tr = load_json('./data/squad1.1/train-v1.1.json')
         dev = load_json('./data/squad1.1/dev-v1.1.json')
 
@@ -25,12 +25,13 @@ class T5Squad:
             test_data += self.deal_one_squad(one)
         print('sample count, train={}, valid={}, test={}'.format(
             len(train_data), len(valid_data), len(test_data)))
-        # save_dir = './data/data_t5/squad1.1/'
-        # if not os.path.exists(save_dir):
-        #     os.makedirs(save_dir)
-        # save_json(train_data, save_dir + 'train.json')
-        # save_json(valid_data, save_dir + 'dev.json')
-        # save_json(test_data, save_dir + 'test.json')
+        
+        # save processed data
+        if not os.path.exists(save_dir):
+            os.makedirs(save_dir)
+        save_json(train_data, save_dir + 'train.json')
+        save_json(valid_data, save_dir + 'dev.json')
+        save_json(test_data, save_dir + 'test.json')
 
     def deal_one_squad(self, one):
         samples = []
@@ -49,8 +50,9 @@ class T5Squad:
                 samples.append(one_sample)
         return samples
 
+# prepare squad data for BART series models
 class BartSquad:
-    def deal_squad(self):
+    def deal_squad(self, save_dir = './data/data_bart/squad1.1/'):
         tr = load_json('./data/squad1.1/train-v1.1.json')
         dev = load_json('./data/squad1.1/dev-v1.1.json')
 
@@ -68,7 +70,8 @@ class BartSquad:
             test_data += self.deal_one_squad(one)
         print('sample count, train={}, valid={}, test={}'.format(
             len(train_data), len(valid_data), len(test_data)))
-        save_dir = './data/data_bart/squad1.1/'
+        
+        # save processed data
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
         save_json(train_data, save_dir + 'train.json')
@@ -93,8 +96,9 @@ class BartSquad:
                 samples.append(one_sample)
         return samples
 
+# prepare squad data for Flan-T5 series models
 class FlanT5Squad:
-    def deal_squad(self):
+    def deal_squad(self, save_dir = './data/data_flant5/squad1.1/'):
         tr = load_json('./data/squad1.1/train-v1.1.json')
         dev = load_json('./data/squad1.1/dev-v1.1.json')
 
@@ -112,7 +116,8 @@ class FlanT5Squad:
             test_data += self.deal_one_squad(one)
         print('sample count, train={}, valid={}, test={}'.format(
             len(train_data), len(valid_data), len(test_data)))
-        save_dir = './data/data_flant5/squad1.1/'
+        
+        # save processed data
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
         save_json(train_data, save_dir + 'train.json')
@@ -136,9 +141,9 @@ class FlanT5Squad:
                 samples.append(one_sample)
         return samples
 
-
+# prepare hotpotqa data for T5 series models
 class T5Hotpot:
-    def deal_hotpot(self):
+    def deal_hotpot(self, save_dir = './data/data_t5/hotpotqa/'):
         tr = load_json('./data/hotpotqa/hotpot_train_v1.1.json')
         dev = load_json('./data/hotpotqa/hotpot_dev_distractor_v1.json')
 
@@ -156,7 +161,8 @@ class T5Hotpot:
             test_data.append(self.deal_one_hotpot(one))
         print('sample count, train={}, valid={}, test={}'.format(
             len(train_data), len(valid_data), len(test_data)))
-        save_dir = './data/data_t5/hotpotqa/'
+        
+        # save processed data
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
         save_json(train_data, save_dir + 'train.json')
@@ -183,8 +189,9 @@ class T5Hotpot:
         }
         return one_sample
 
+# prepare hotpotqa data for BART series models
 class BartHotpot:
-    def deal_hotpot(self):
+    def deal_hotpot(self, save_dir = './data/data_bart/hotpotqa/'):
         tr = load_json('./data/hotpotqa/hotpot_train_v1.1.json')
         dev = load_json('./data/hotpotqa/hotpot_dev_distractor_v1.json')
         print(len(tr), len(dev))
@@ -201,7 +208,7 @@ class BartHotpot:
             test_data.append(self.deal_one_hotpot(one))
         print('sample count, train={}, valid={}, test={}'.format(
             len(train_data), len(valid_data), len(test_data)))
-        save_dir = './data/data_bart/hotpotqa/'
+        # save processed data
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
         save_json(train_data, save_dir + 'train.json')
@@ -228,8 +235,9 @@ class BartHotpot:
         }
         return one_sample
 
+# prepare hotpotqa data for Flan-T5 series models
 class FlanT5Hotpot:
-    def deal_hotpot(self):
+    def deal_hotpot(self, save_dir = './data/data_flant5/hotpotqa/'):
         tr = load_json('./data/hotpotqa/hotpot_train_v1.1.json')
         dev = load_json('./data/hotpotqa/hotpot_dev_distractor_v1.json')
 
@@ -247,7 +255,8 @@ class FlanT5Hotpot:
             test_data.append(self.deal_one_hotpot(one))
         print('sample count, train={}, valid={}, test={}'.format(
             len(train_data), len(valid_data), len(test_data)))
-        save_dir = './data/data_flant5/hotpotqa/'
+        
+        # save processed data
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
         save_json(train_data, save_dir + 'train.json')
@@ -277,6 +286,8 @@ class FlanT5Hotpot:
 
 
 if __name__ == '__main__':
-    squad = T5Squad()
-    squad.deal_squad()
+    # prepare data
+    save_dir = './data/data_t5/hotpotqa/'
+    hot = T5Hotpot()
+    hot.deal_hotpot(save_dir)
     

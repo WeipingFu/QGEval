@@ -91,30 +91,7 @@ class BartDataset():
         self.dev_dataset = self.dev_dataset.map(self.convert_to_features, batched=True)
         if self.test_dataset is not None:
             self.test_dataset = self.test_dataset.map(self.convert_to_features, batched=True)
-        print('max_train_source_length={}, mean_train_source_length={}'.format(
-            max([len(x) for x in self.train_dataset["input_ids"]]),
-            sum([len(x) for x in self.train_dataset["input_ids"]]) / len(self.train_dataset)
-        ))
-        print('max_dev_source_length={}, mean_dev_source_length={}'.format(
-            max([len(x) for x in self.dev_dataset["input_ids"]]),
-            sum([len(x) for x in self.dev_dataset["input_ids"]]) / len(self.dev_dataset)
-        ))
-        print('max_test_source_length={}, mean_test_source_length={}'.format(
-            max([len(x) for x in self.test_dataset["input_ids"]]),
-            sum([len(x) for x in self.test_dataset["input_ids"]]) / len(self.test_dataset)
-        ))
-        print('max_train_target_length={}, mean_train_target_length={}'.format(
-            max([len(x) for x in self.train_dataset["target_ids"]]),
-            sum([len(x) for x in self.train_dataset["target_ids"]]) / len(self.train_dataset)
-        ))
-        print('max_dev_target_length={}, mean_dev_target_length={}'.format(
-            max([len(x) for x in self.dev_dataset["target_ids"]]),
-            sum([len(x) for x in self.dev_dataset["target_ids"]]) / len(self.dev_dataset)
-        ))
-        print('max_test_target_length={}, mean_test_target_length={}'.format(
-            max([len(x) for x in self.test_dataset["target_ids"]]),
-            sum([len(x) for x in self.test_dataset["target_ids"]]) / len(self.test_dataset)
-        ))
+       
         # save data
         self.save_tokenized_data(save_dir)
 
@@ -223,10 +200,6 @@ def train_model(arg_path):
         logging.warning('no tokenizer')
         return
 
-    # model.resize_token_embeddings(len(tokenizer))
-    # model.config.vocab_size = 32129
-    # print(model.config.vocab_size, tokenizer.vocab_size)
-
     # Get datasets
     logging.info('loading data')
     train_dataset = torch.load(data_args.train_file_path)
@@ -279,7 +252,7 @@ def train_model(arg_path):
 
     return results
 
-
+# train QG model
 def train_qg(arg_path, train_path, dev_path, test_path, arg_dict=None):
     if arg_dict is not None:
         save_json(arg_dict, arg_path)
@@ -295,6 +268,7 @@ def train_qg(arg_path, train_path, dev_path, test_path, arg_dict=None):
     print('processed data saved to {}'.format(save_dir))
     train_model(arg_path)
 
+# predict with QG model
 def predict(model_dir, tokenizer_dir, test_pt_path, result_save_path=None):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print('device: {}'.format(device))
@@ -321,16 +295,14 @@ def predict(model_dir, tokenizer_dir, test_pt_path, result_save_path=None):
     result = pd.DataFrame(res_dict)
     if result_save_path is not None:
         result.to_csv(result_save_path, encoding='utf-8', index=False)
-        # writer = pd.ExcelWriter(result_save_path.replace('.csv', '.xlsx'),
-        #                         engine='xlsxwriter', options={'encoding': 'utf-8'})
-        # result.to_excel(writer, index=False)
-        # writer.close()
+       
         print('result saved to {}'.format(result_save_path))
     print('done {} samples'.format(len(decoded_texts)))
     return decoded_texts
 
 
 if __name__ == "__main__":
+    # train QG model
     arg_path = './args/bart_large_hotpot.json'
     data_dir = './data/data_bart/hotpotqa/'
     train_path = data_dir + 'train.json'
@@ -338,11 +310,10 @@ if __name__ == "__main__":
     test_path = data_dir + 'test.json'
     train_qg(arg_path, train_path, dev_path, test_path)
     
+    # # test
     # arg_path = './args/bart_large_hotpot.json'
     # test_pt_path = './data/data_bart/hotpotqa/pt/test.pt'
     # model_dir = './model/bart-large/hotpotqa/'
     # tokenizer_dir = model_dir + 'tokenizer/'
     # result_save_path = './model/bart-large/hotpotqa/result/prediction.csv'
     # decoded_texts = predict(model_dir, tokenizer_dir, test_pt_path, result_save_path)
-
-

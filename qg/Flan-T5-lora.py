@@ -104,12 +104,7 @@ class FlanT5Dataset():
         self.dev_dataset = self.dev_dataset.map(self.convert_to_features, batched=True)
         if self.test_dataset is not None:
             self.test_dataset = self.test_dataset.map(self.convert_to_features, batched=True)
-        self.length_count('train input', [len(x) for x in self.train_dataset["input_ids"]])
-        self.length_count('dev input', [len(x) for x in self.dev_dataset["input_ids"]])
-        self.length_count('test input', [len(x) for x in self.test_dataset["input_ids"]])
-        self.length_count('train output', [len(x) for x in self.train_dataset["target_ids"]])
-        self.length_count('dev output', [len(x) for x in self.dev_dataset["target_ids"]])
-        self.length_count('test output', [len(x) for x in self.test_dataset["target_ids"]])
+        
         # save data
         self.save_tokenized_data(save_dir)
 
@@ -287,7 +282,7 @@ def train_model(arg_path):
 
     return results
 
-
+# train QG model
 def train_qg(arg_path, train_path, dev_path, test_path, arg_dict=None):
     if arg_dict is not None:
         save_json(arg_dict, arg_path)
@@ -303,6 +298,7 @@ def train_qg(arg_path, train_path, dev_path, test_path, arg_dict=None):
         print('processed data saved to {}'.format(save_dir))
     train_model(arg_path)
 
+# predict with QG model
 def predict(pretraied_dir, model_dir, tokenizer_dir, test_pt_path, result_save_path=None):
     from peft import PeftModel, PeftConfig
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -334,14 +330,13 @@ def predict(pretraied_dir, model_dir, tokenizer_dir, test_pt_path, result_save_p
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
         result.to_csv(result_save_path, encoding='utf-8', index=False)
-        # writer = pd.ExcelWriter(result_save_path.replace('.csv', '.xlsx'),
-        #                         engine='xlsxwriter', options={'encoding': 'utf-8'})
-        # result.to_excel(writer, index=False)
-        # writer.close()
+        
         print('result saved to {}'.format(result_save_path))
     print('done {} samples'.format(len(decoded_texts)))
     return decoded_texts
 
+
+# few-shot prediction
 def predict_few(model_path, few_shot_path, test_path, result_save_path, name, k=8):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     max_tar_length = {
@@ -357,11 +352,11 @@ def predict_few(model_path, few_shot_path, test_path, result_save_path, name, k=
     test_data = load_json(test_path)
     result = []
     for one in tqdm(test_data):
+        # instruction
         for_pred = 'Answer: {}\nContext: {}\nQuestion: '.format(
             one['answer'], one['context']
         )
-        # ness_input = inst + for_pred
-        # ness_len = tokenizer(ness_input, return_tensors="pt")['input_ids'].size(-1)
+        
         examples = []
         input_text = inst + '\n'.join(examples) + for_pred
         for i in range(k):
@@ -380,22 +375,25 @@ def predict_few(model_path, few_shot_path, test_path, result_save_path, name, k=
 
         if len(result) == 0:
             print(input_text)
+        # tokenize
         inputs = tokenizer(input_text, max_length=max_length, truncation=True, return_tensors="pt")
         print('example count={}, input token length={}'.format(
             len(examples), inputs['input_ids'].size(-1)
         ))
         input_ids = inputs['input_ids'].to(device)
+        # generate
         outputs = model.generate(input_ids=input_ids, max_length=max_tar_length[name])
         decoded_text = tokenizer.batch_decode(outputs, skip_special_tokens=True)[0]
         print('prediction: ', decoded_text)
         one['prediction'] = decoded_text
         result.append(one)
+    # save result
     pd.DataFrame(result).to_csv(result_save_path, index=False)
 
 
 if __name__ == "__main__":
     # os.environ["CUDA_VISIBLE_DEVICES"] = '2'
-    # train
+    # train QG model
     arg_path = 'args/flant5_xxl_squad_lora.json'
     data_dir = './data/data_flant5/squad1.1/'
     train_path = data_dir + 'train.json'
@@ -411,7 +409,7 @@ if __name__ == "__main__":
     # result_save_path = model_dir + 'result/prediction.csv'
     # decoded_texts = predict(pretrained_dir, model_dir, tokenizer_dir, test_pt_path, result_save_path)
 
-    # # few-shot
+    # # few-shot prediction
     # model_path = 'google/flan-t5-xxl'
     # few_shot_path = './data/squad1.1-few.json'
     # test_path = './data/squad-dev.json'

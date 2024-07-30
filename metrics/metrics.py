@@ -170,24 +170,31 @@ if __name__ == "__main__":
     import os
     import pandas as pd
     os.environ["CUDA_VISIBLE_DEVICES"] = '6'
+    # load data
     data_path = './test_data/test.xlsx'
     save_path = data_path
     data = pd.read_excel(data_path)
+    # prepare parameters
     hypos = data['prediction'].tolist()
     refs_list = [data['target'].tolist()]
     contexts = data['passage'].tolist()
     answers = data['answer'].tolist()
+    # metrics to use
     score_names = [
         # 'BLEU-4', 'METEOR','ROUGE-L','BERTScore', 'MoverScore', 
         # 'BLEURT', 'Q-BLEU4', 
-        'QSTS',  
+        # 'QSTS',  
         # 'BARTScore-ref', 'BARTScore-src',
         # 'UniEval', 
-        # 'QRelScore', 'RQUGE'
+        'QRelScore', 
+        # 'RQUGE'
     ]
+    # run metric one by one
     res = get_metrics(hypos, refs_list, contexts, answers, score_names=score_names)
+    # handle results
     for k, v in res.items():
         data[k] = v
     print(data.columns)
+    # save results
     data.to_excel(save_path, index=False)
     print('Metrics saved to {}'.format(save_path))

@@ -52,7 +52,7 @@ The average annotation scores of each QG system over 7 dimensions are shown in t
 
 ## Metrics
 We implemented 15 metrics for re-evaluation, they are:
-| **Metrics**                | **Paper** | **Code** |
+| **Metrics**                | **Paper** | **Code Link** |
 |-----------------------------|----------|-----------|
 | BLEU-4            | [BLEU: a Method for Automatic Evaluation of Machine Translation](https://aclanthology.org/P02-1040.pdf)  |  [link](https://www.nltk.org/_modules/nltk/translate/bleu_score.html)   |
 | ROUGE-L     | [ROUGE: A Package for Automatic Evaluation of Summaries](https://aclanthology.org/W04-1013.pdf)   | [link](https://github.com/google-research/google-research/tree/master/rouge)   | 
@@ -74,36 +74,94 @@ We share the results of each metric on each generated question in [data/metric_r
 Results of LLM-based metrics on answerability are in [data/test_answerability.xlsx](./data/test_answerability.xlsx).
 
 ## Models
-You can find our trained QG model at (https://huggingface.co/QGEval/QG_EVAL).
+You can find our trained QG model at `coming soon`.
 
 ## How to use
 Our codes provide the ability to `evaluate automatic metrics`, you can also use our codes to `train Question Generation model` and `calculate automatic metrics`.
 ### Evaluation of Automatic Metrics
-- The codes for **Evaluation of Automatic Metrics** are in [metric](./metric)
-- Take the evaluation of QRelScore as an example, you can use the QGEval benchmark to evaluate QRelScore by these steps:
-1. prepare data, you can get the QGEval benchmark at [data/scores.xlsx](./data/scores.xlsx)
-2. cd ./metric
-3. run `pip install -r requirements.txt` to install the required packages
-4. run `python grel.py` or `python metrics.py` to get QRelScore metric result
-5. run `python pearson.py` to obtain the Pearson correlation coefficient between the generated results and the labeled results.
+The codes for **Automatic Metrics** are in [metric](./metric).
 
-Find more details in [metric/readme](./metric/readme).
+Take the evaluation of QRelScore as an example, you can use the QGEval benchmark to evaluate QRelScore step by step:
+1. Prepare data for evaluation:
+You can get the QGEval dataset at [data/scores.xlsx](./data/scores.xlsx).
+    ```python
+    Column Explanation
+    "passage" - the passage of the question based on.
+    "reference" - the reference question.
+    "answer" - the provided answer.
+    "prediction" - the generated question.
+    "source" - the base dataset and model used to   generate the 'prediction' question.
+    ```
+
+2. Run automatic metrics
+   - cd `./metric`
+   - run `pip install -r requirements.txt` to install the required packages
+   - run the specific code file to get results from automatic metrics. To get QRelScore results, run `python metrics.py`:
+   ```python
+    import pandas as pd
+    # load data
+    data_path = 'your data path'
+    save_path = 'result save path'
+    data = pd.read_excel(data_path)
+    # prepare parameters
+    hypos = data['prediction'].tolist()
+    refs_list = [data['reference'].tolist()]
+    contexts = data['passage'].tolist()
+    answers = data['answer'].tolist()
+    # metric to use
+    score_names = ['QRelScore']
+    # run metric
+    res = get_metrics(hypos, refs_list, contexts, answers, score_names=score_names)
+    # handle results
+    for k, v in res.items():
+        data[k] = v
+    # save results
+    data.to_excel(save_path, index=False)
+    print('Metrics saved to {}'.format(save_path))
+   ```
+
+
+3. Calculate Correlations
+   
+   run `python coeff.py` to obtain the Pearson correlation coefficient between the generated results and the labeled results.
+   ```python
+   import pandas as pd
+   result_data_path = 'your result path'
+   df = pd.read_excel(result_data_path)
+   metrics = ['QRelScore']
+
+   # dimensions to calculate correlation with
+   dimensions = ['fluency','clarity','conciseness','relevance','consistency','answerability','answer_consistency']
+
+   # calculate pearson
+   coeff = Coeff()
+
+   for metric in metrics:
+    print(f"Pearson of {metric}")
+    for dimension in dimensions:
+      labels = df[dimension].to_list()
+      preds = df[metric].to_list()
+      per, spea, ken = coeff.apply(labels, preds)
+      print(f"{dimension}: Pearson={per}, Spearman={spea}, Kendall={ken}")
+      print()
+   ```
+More details about the codes for automatic metrics are in [metric/readme](./metric/readme).
 
 ### Question Generation
-- The codes and the data for **Question Generation** are in [qg](./qg), train your own QG model by these steps:
-1. cd ./qg
+The codes and the data for **Question Generation** are in [qg](./qg), train your own QG models by these steps:
+1. cd `./qg`
 2. run `pip install -r requirements.txt` to install the required packages
 3. run `python process.py` to process data
-4. run the code file for specific models to train. For example, run `python T5.py` to train your T5-based QG model.
+4. run the code file for specific models to train. For example, run `python T5.py` to train your T5-based QG model
 
 Find more details in [qg/readme](./qg/readme).
 
 ###  Automatic Metrics Calculation
-- The codes for **Automatic metrics Calculation(e.g. BLEU-4)** are in [metric](./metric), calculate automatic metrics by these steps:
+The codes for **Automatic Metrics Calculation(e.g. BLEU-4)** are in [metric](./metric), calculate automatic metrics by these steps:
 1. prepare data, you can get the Question Generation dataset at [qg/data](./qg/data) or you can prepare data yourself
-2. cd ./metric
+2. cd `./metric`
 3. run `pip install -r requirements.txt` to install the required packages
-4. run `python metrics.py` to get your chosen metrics evaluation result.
+4. run `python metrics.py` to get your chosen metrics evaluation results
 
 [Notice] When applying metric codes, please modify the model file location of each metric in the code.
 

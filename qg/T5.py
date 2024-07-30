@@ -107,12 +107,6 @@ class T5Dataset():
         self.dev_dataset = self.dev_dataset.map(self.convert_to_features, batched=True)
         if self.test_dataset is not None:
             self.test_dataset = self.test_dataset.map(self.convert_to_features, batched=True)
-        self.length_count('train input', [len(x) for x in self.train_dataset["input_ids"]])
-        self.length_count('dev input', [len(x) for x in self.dev_dataset["input_ids"]])
-        self.length_count('test input', [len(x) for x in self.test_dataset["input_ids"]])
-        self.length_count('train output', [len(x) for x in self.train_dataset["target_ids"]])
-        self.length_count('dev output', [len(x) for x in self.dev_dataset["target_ids"]])
-        self.length_count('test output', [len(x) for x in self.test_dataset["target_ids"]])
         # save data
         self.save_tokenized_data(save_dir)
 
@@ -221,10 +215,6 @@ def train_model(arg_path):
         logging.warning('no tokenizer')
         return
 
-    # model.resize_token_embeddings(len(tokenizer))
-    # model.config.vocab_size = 32129
-    # print(model.config.vocab_size, tokenizer.vocab_size)
-
     # Get datasets
     logging.info('loading data')
     train_dataset = torch.load(data_args.train_file_path)
@@ -278,13 +268,12 @@ def train_model(arg_path):
 
     return results
 
-
+# train QG model
 def train_qg(arg_path, train_path, dev_path, test_path, arg_dict=None):
     if arg_dict is not None:
         save_json(arg_dict, arg_path)
     print(arg_path)
     arg_dict = load_json(arg_path)
-    # if not os.path.exists(arg_dict['train_file_path']):
     print('start to process data')
     dataset = T5Dataset(arg_path, arg_dict['model_name_or_path'])
     save_dir = os.path.dirname(arg_dict['train_file_path'])
@@ -294,6 +283,7 @@ def train_qg(arg_path, train_path, dev_path, test_path, arg_dict=None):
     print('processed data saved to {}'.format(save_dir))
     train_model(arg_path)
 
+# predict with QG models
 def predict(model_dir, tokenizer_dir, test_pt_path, result_save_path=None):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print('device: {}'.format(device))
@@ -301,11 +291,11 @@ def predict(model_dir, tokenizer_dir, test_pt_path, result_save_path=None):
     model = T5ForConditionalGeneration.from_pretrained(model_dir).to(device)
     tokenizer = T5Tokenizer.from_pretrained(tokenizer_dir)
     print('data and model loaded')
-    print(model)
+    # print(model)
     print('data count: {}'.format(len(test_dataset['input_ids'])))
     dataloader = DataLoader(test_dataset, batch_size=32, shuffle=False)
     decoded_texts = []
-    # arg_dict = load_json(arg_path)
+    
     print('Start predict')
     for batch in tqdm(dataloader):
         input_ids = batch['input_ids'].to(device)
@@ -324,17 +314,13 @@ def predict(model_dir, tokenizer_dir, test_pt_path, result_save_path=None):
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
         result.to_csv(result_save_path, encoding='utf-8', index=False)
-        # writer = pd.ExcelWriter(result_save_path.replace('.csv', '.xlsx'),
-        #                         engine='xlsxwriter', options={'encoding': 'utf-8'})
-        # result.to_excel(writer, index=False)
-        # writer.close()
         print('result saved to {}'.format(result_save_path))
     print('done {} samples'.format(len(decoded_texts)))
     return decoded_texts
 
 
 if __name__ == "__main__":
-    # train
+    # train model
     arg_path = './args/t5_base_hotpot.json'
     data_dir = './data/data_t5/hotpotqa/'
     train_path = data_dir + 'train.json'
