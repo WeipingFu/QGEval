@@ -79,7 +79,7 @@ You can find our trained QG model at `coming soon`.
 ## How to use
 Our codes provide the ability to `evaluate automatic metrics`, you can also use our codes to `train Question Generation model` and `calculate automatic metrics`.
 ### Evaluation of Automatic Metrics
-The codes for **Automatic Metrics** are in [metric](./metric).
+The codes for **Automatic Metrics** are in [metrics](./metrics).
 
 Take the evaluation of QRelScore as an example, you can use the QGEval benchmark to evaluate QRelScore step by step:
 1. Prepare data for evaluation:
@@ -157,7 +157,7 @@ The codes and the data for **Question Generation** are in [qg](./qg), train your
 Find more details in [qg/readme](./qg/README.md).
 
 ###  Automatic Metrics Calculation
-The codes for **Automatic Metrics Calculation(e.g. BLEU-4)** are in [metric](./metric), calculate automatic metrics by these steps:
+The codes for **Automatic Metrics Calculation(e.g. BLEU-4)** are in [metrics](./metrics), calculate automatic metrics by these steps:
 1. prepare data, you can get the Question Generation dataset at [qg/data](./qg/data) or you can prepare data yourself
 2. cd `./metric`
 3. run `pip install -r requirements.txt` to install the required packages
