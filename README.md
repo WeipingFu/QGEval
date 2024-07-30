@@ -2,7 +2,7 @@
 Resources for paper - QGEval: A Benchmark for Question Generation Evaluation
 
 ## Data
-We share the generated questions from 15 QG systems with averaged annotation scores of three annotators in [data/scores.xlsx](./data/scores.xlsx), and the instances integrated by passages are in [data/instances.json](./data/instances.json).
+We share the generated questions from 15 QG models with averaged annotation scores of three annotators in [data/scores.xlsx](./data/scores.xlsx), and the instances integrated by passages are in [data/instances.json](./data/instances.json).
 We also share the annotation result of each annotator in [data/annotation result](./data/annotation%20result).
 
 Example of instances.
@@ -29,8 +29,8 @@ Example of instances.
 }
 ```
 
-The average annotation scores of each QG system over 7 dimensions are shown in the below table.
-| **Systems**                | **Flu.** | **Clar.** | **Conc.** | **Rel.** | **Cons.** | **Ans.** | **AnsC.** | **Avg.** | 
+The average annotation scores of each QG model over 7 dimensions are shown in the below table.
+| **Models**                | **Flu.** | **Clar.** | **Conc.** | **Rel.** | **Cons.** | **Ans.** | **AnsC.** | **Avg.** | 
 |-----------------------------|----------|-----------|-----------|----------|-----------|----------|----------|-----------|
 | M1 - Reference              | 2.968    | 2.930     | **2.998** | 2.993    | 2.923     | 2.832    | **2.768** | **2.916** |
 | M2 - BART-base-finetune     | 2.958    | 2.882     | 2.898     | 2.995    | 2.920     | <u>2.732</u>  | 2.588     | 2.853 |
@@ -145,7 +145,7 @@ You can get the QGEval dataset at [data/scores.xlsx](./data/scores.xlsx).
       print(f"{dimension}: Pearson={per}, Spearman={spea}, Kendall={ken}")
       print()
    ```
-More details about the codes for automatic metrics are in [metric/readme](./metric/readme).
+More details about the codes for automatic metrics are in [metrics/readme](./metrics/README.md).
 
 ### Question Generation
 The codes and the data for **Question Generation** are in [qg](./qg), train your own QG models by these steps:
@@ -154,7 +154,7 @@ The codes and the data for **Question Generation** are in [qg](./qg), train your
 3. run `python process.py` to process data
 4. run the code file for specific models to train. For example, run `python T5.py` to train your T5-based QG model
 
-Find more details in [qg/readme](./qg/readme).
+Find more details in [qg/readme](./qg/README.md).
 
 ###  Automatic Metrics Calculation
 The codes for **Automatic Metrics Calculation(e.g. BLEU-4)** are in [metric](./metric), calculate automatic metrics by these steps:
@@ -163,9 +163,7 @@ The codes for **Automatic Metrics Calculation(e.g. BLEU-4)** are in [metric](./m
 3. run `pip install -r requirements.txt` to install the required packages
 4. run `python metrics.py` to get your chosen metrics evaluation results
 
-[Notice] When applying metric codes, please modify the model file location of each metric in the code.
-
-Find more details in [metric/readme](./metric/readme).
+Find more details in [metrics/readme](./metrics/README.md).
 
 ## Citation
 Please cite:
