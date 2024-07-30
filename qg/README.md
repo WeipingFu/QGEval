@@ -20,7 +20,7 @@ run `pip install -r requirements.txt` to install the required packages.
 2. Train your own QG models 
 
     We provide codes to train `T5/FLAN-T5/BART`-based QG models. You may update training arguments in [./args](./args/), and run the code file for specific model to train. 
-    ```json
+    ```python
     # model name: code file name
     BART-base/large_finetune: bart.py
     T5-base/large_finetune: T5.py
