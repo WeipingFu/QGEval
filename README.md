@@ -74,7 +74,7 @@ We share the results of each metric on each generated question in [data/metric_r
 Results of LLM-based metrics on answerability are in [data/test_answerability.xlsx](./data/test_answerability.xlsx).
 
 ## Models
-You can find our trained QG model at `coming soon`.
+You can find our trained QG model at [huggingface](https://huggingface.co/QGEval2024).
 
 ## How to use
 Our codes provide the ability to `evaluate automatic metrics`, you can also use our codes to `train Question Generation model` and `calculate automatic metrics`.
