@@ -14,7 +14,7 @@ run `pip install -r requirements.txt` to install the required packages.
     Use the data we provided at [../data/scores.xlsx](../data/scores.xlsx), or use your own data, which should provide passages, answers, and references.
 
 2. Calculate automatic metrics. 
-    - Download models at `coming soon` for metrics.
+    - Download necessary models for each metric respectively. Model download sites can be found in each metric's link in [readme of QGEval](../README.md).
     - Update model path inside the codes. See `QRelScore` as an example.
         ```python
         # update the path of mlm_model and clm_model
