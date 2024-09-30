@@ -1,4 +1,4 @@
-from moverscore.moverscore_v2 import get_idf_dict, word_mover_score 
+from .moverscore.moverscore_v2 import moverscore_init, get_idf_dict, word_mover_score 
 from collections import defaultdict
 from itertools import zip_longest
 import numpy as np
@@ -22,7 +22,8 @@ def sentence_score(hypothesis, references, trace=0):
           
     return sentence_score
 
-def corpus_mover(hypos, refs_list, trace=0):
+def corpus_mover(hypos, refs_list,model_name='distilbert-base-uncased', trace=0):
+    moverscore_init(model_name)
     score_list = []
     assert len(hypos) == len(refs_list[0])
     for i in range(len(hypos)):
@@ -53,4 +54,3 @@ if __name__ == "__main__":
     # hypothesis = 'How many men did William Trent send to Fort Duquesne?'
     # references = ['How many men did Duquesne send to relieve Saint-Pierre?']
     # print(sentence_score(hypothesis, references, 1))
-

@@ -1,4 +1,4 @@
-from bleurt import score
+from .bleurt import score
 
 checkpoint = "bleurt/BLEURT-20"
 references = ["This is a test."]

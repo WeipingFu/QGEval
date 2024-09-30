@@ -16,7 +16,7 @@ from transformers import (
     set_seed,
     EarlyStoppingCallback
 )
-from utils import load_json, save_json
+from .utils import load_json, save_json
 
 logger = logging.getLogger(__name__)
 

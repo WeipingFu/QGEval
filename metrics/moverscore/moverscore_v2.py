@@ -15,16 +15,19 @@ from functools import partial
 
 from transformers import AutoTokenizer, AutoModel
 
-device = 'cuda'
+tokenizer = None
+model = None
+model_name = 'distilbert-base-uncased'
+tokenizer = None
 
-if os.environ.get('MOVERSCORE_MODEL'):
-    model_name = os.environ.get('MOVERSCORE_MODEL')
-else:
-    model_name = 'distilbert-base-uncased'
-tokenizer = AutoTokenizer.from_pretrained(model_name, do_lower_case=True)
-model = AutoModel.from_pretrained(model_name, output_hidden_states=True, output_attentions=True)
-model.eval()
-model.to(device)
+def moverscore_init(init_model_name):
+    device = 'cuda'
+
+    model_name = init_model_name
+    tokenizer = AutoTokenizer.from_pretrained(model_name, do_lower_case=True)
+    model = AutoModel.from_pretrained(model_name, output_hidden_states=True, output_attentions=True)
+    model.eval()
+    model.to(device)
 
 def truncate(tokens):
     if len(tokens) > tokenizer.model_max_length - 2:

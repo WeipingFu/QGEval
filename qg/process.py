@@ -1,4 +1,4 @@
-from utils import load_json, save_json
+from .utils import load_json, save_json
 import os
 from collections import Counter
 import pandas as pd

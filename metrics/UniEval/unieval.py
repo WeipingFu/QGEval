@@ -1,7 +1,7 @@
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-from utils import convert_to_json
+from .utils import convert_to_json
 from metric.evaluator import get_evaluator
 
 # Example for qg

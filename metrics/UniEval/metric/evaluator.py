@@ -4,7 +4,7 @@ import numpy as np
 from nltk import sent_tokenize
 from metric.scorer import UniEvaluator
 sys.path.append("..")
-from utils import add_question, print_scores
+from .utils import add_question, print_scores
 
 par_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

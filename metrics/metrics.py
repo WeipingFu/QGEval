@@ -52,7 +52,7 @@ def get_metrics(hypos, refs_list, contexts, answers, score_names):
     if 'MoverScore' in score_names:
         print('MoverScore', '#'*50)
         from MoverScore import corpus_mover
-        res['MoverScore'] = corpus_mover(hypos, refs_list)
+        res['MoverScore'] = corpus_mover(hypos, refs_list,model_name='distilbert-base-uncased')
         torch.cuda.empty_cache()
     # qbleu
     if 'Q-BLEU4' in score_names:
@@ -146,7 +146,7 @@ def get_metrics(hypos, refs_list, contexts, answers, score_names):
     if 'QRelScore' in score_names:
         print('QRelScore', '#'*50)
         from qrel import corpus_qrel
-        res['QRelScore'] = [round(x, 4) for x in corpus_qrel(hypos, contexts, device)]
+        res['QRelScore'] = [round(x, 4) for x in corpus_qrel(hypos, contexts, device,_mlm_model='model/bert-base-cased',_clm_model='model/gpt2')]
         torch.cuda.empty_cache()
     # rquge
     if 'RQUGE' in score_names:

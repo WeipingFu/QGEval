@@ -248,5 +248,3 @@ if __name__ == "__main__":
     pd.DataFrame(res).to_excel(excel_path, index=False)
     # handle response to score
     handle_response(excel_path)
-   
-    
