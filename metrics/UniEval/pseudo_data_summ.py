@@ -5,7 +5,7 @@ import random
 import numpy as np
 from rank_bm25 import BM25Okapi
 from nltk import sent_tokenize
-from utils import fast_rouge, get_dec_and_ref
+from .utils import fast_rouge, get_dec_and_ref
 
 data_path = '/path/to/cnndm_train.jsonl'
 

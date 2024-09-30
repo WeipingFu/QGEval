@@ -1,5 +1,5 @@
 from lmqg import TransformersQG
-from utils import load_json
+from .utils import load_json
 import pandas as pd
 import os
 

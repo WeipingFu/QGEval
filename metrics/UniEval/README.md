@@ -45,7 +45,7 @@ We release four pre-trained evaluators for different NLG tasks as follows:
 ### Get Scores for Summarization
 Example usage for summarization is shown below.
 ```python
-from utils import convert_to_json
+from .utils import convert_to_json
 from metric.evaluator import get_evaluator
 
 task = 'summarization'
@@ -97,7 +97,7 @@ eval_scores = evaluator.evaluate(data, dims=['coherence', 'consistency', 'fluenc
 ### Get Scores for Dialogue
 Example usage for dialogue response generation is shown below.
 ```python
-from utils import convert_to_json
+from .utils import convert_to_json
 from metric.evaluator import get_evaluator
 
 task = 'dialogue'
@@ -145,7 +145,7 @@ Please keep the format of the input dialogue consistent with [topical_chat.json]
 ### Get Factual Consistency Score
 **UniEval** can also act as a high-performance single-dimensional evaluator, such as achieving the best correlation when evaluating factual consistency (see Tables 3 and 9 in the paper). Example usage for factual consistency detection is shown below.
 ```python
-from utils import convert_to_json
+from .utils import convert_to_json
 from metric.evaluator import get_evaluator
 
 task = 'fact'

@@ -1,5 +1,5 @@
 # %%
-from utils import *
+from .utils import *
 from copy import deepcopy
 from tqdm import trange
 from tqdm import tqdm

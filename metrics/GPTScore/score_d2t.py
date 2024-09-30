@@ -2,7 +2,7 @@ import argparse
 import os
 import time
 import numpy as np
-from utils import *
+from .utils import *
 from gpt3_score import gpt3score
 from transformers import GPT2Tokenizer
 import json

@@ -1,5 +1,5 @@
 
-from GPTScore.flan_score import FLANScorer
+from .GPTScore.flan_score import FLANScorer
 
 class FlanScorerMod:
     def __init__(self, model_path, max_length=1024, device='cuda:0'):

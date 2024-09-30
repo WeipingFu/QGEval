@@ -3,7 +3,6 @@ import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(current_dir+'/QSTS/code')
 
-from TypeSensitiveQSimilarity import QSTS
 from tqdm import tqdm
 from transformers import AutoTokenizer, T5ForConditionalGeneration
 
@@ -19,6 +18,7 @@ def get_qtype(ques, tokenizer, model, device, **generator_args):
 
 def corpus_qsts(preds, refs, device, tcmodel_path=current_dir+'/QSTS/model/qct5', 
                 glve_path=current_dir+'/QSTS/embeddings/glove.840B.300d.wiki_ss.pkl'):
+    from TypeSensitiveQSimilarity import QSTS
     scores = []
     assert len(preds) == len(refs)
     qsts = QSTS(glve_path)
@@ -35,6 +35,7 @@ def corpus_qsts(preds, refs, device, tcmodel_path=current_dir+'/QSTS/model/qct5'
             goldq=target, predq=pred, ignoreQC=False, goldqc=goldqc, predqc=predqc)
         scores.append(round(score, 4))
     return scores
+
 
 if __name__ == '__main__':
     import os
