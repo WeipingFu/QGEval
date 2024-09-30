@@ -1,0 +1,2 @@
+[console_scripts]
+rquge = rquge_score_cli.scorer_cli:main

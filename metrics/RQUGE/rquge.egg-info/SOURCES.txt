@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+rquge.egg-info/PKG-INFO
+rquge.egg-info/SOURCES.txt
+rquge.egg-info/dependency_links.txt
+rquge.egg-info/entry_points.txt
+rquge.egg-info/requires.txt
+rquge.egg-info/top_level.txt
+rquge_score/__init__.py
+rquge_score/scorer.py
+rquge_score_cli/__init__.py
+rquge_score_cli/scorer_cli.py
