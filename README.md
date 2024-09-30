@@ -1,5 +1,5 @@
 # QGEval
-Resources for paper - QGEval: A Benchmark for Question Generation Evaluation
+Resources for paper - QGEval: Benchmarking Multi-dimensional Evaluation for Question Generation
 
 ## Data
 We share the generated questions from 15 QG models with averaged annotation scores of three annotators in [data/scores.xlsx](./data/scores.xlsx), and the instances integrated by passages are in [data/instances.json](./data/instances.json).
@@ -78,6 +78,13 @@ You can find our trained QG model at [huggingface](https://huggingface.co/QGEval
 
 ## How to use
 Our codes provide the ability to `evaluate automatic metrics`, you can also use our codes to `train Question Generation model` and `calculate automatic metrics`.
+
+You can install our packages for question generation or automatic metrics.
+- Question Generation: `pip install QGEval-qg`. For usage, please refer to [https://pypi.org/project/QGEval-qg/](https://pypi.org/project/QGEval-qg/).
+- Automatic Metrics: `pip install QGEval-metrics`. For usage, please refer to [https://pypi.org/project/QGEval-metrics/](https://pypi.org/project/QGEval-metrics/).
+
+You can also download this resource and use it following the instructions below.
+
 ### Evaluation of Automatic Metrics
 The codes for **Automatic Metrics** are in [metrics](./metrics).
 

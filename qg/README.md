@@ -1,6 +1,10 @@
 ## How to use
 Our codes provide the ability for  `Question Generation`, please follow these steps to train your QG models.
 
+You can use this code in two ways:
+- Install the package, `pip install QGEval-qg`. For usage, please refer to [https://pypi.org/project/QGEval-qg/](https://pypi.org/project/QGEval-qg/).
+- Download this resource, and use it following the instructions below.
+
 ### Enviroment
 run `pip install -r requirements.txt` to install the required packages.
 

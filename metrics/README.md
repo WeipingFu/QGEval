@@ -1,5 +1,10 @@
 ## How to use
 Our codes provide the ability to `evaluate automatic metrics` which concludes the ability to `calculate automatic metrics`. Please follow these steps to calculate automatic QG metrics and evaluate automatic metrics on our benchmark.
+
+You can use this code in two ways:
+- Install the package, `pip install QGEval-metrics`. For usage, please refer to [https://pypi.org/project/QGEval-metrics/](https://pypi.org/project/QGEval-metrics/).
+- Download this resource, and use it following the instructions below.
+
 ### Enviroment
 run `pip install -r requirements.txt` to install the required packages.
 
