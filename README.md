@@ -175,12 +175,13 @@ Find more details in [metrics/readme](./metrics/README.md).
 ## Citation
 Please cite:
 ```python
-@misc{fu2024qgeval,
-      title={QGEval: A Benchmark for Question Generation Evaluation}, 
+@misc{fu2024qgevalbenchmarkingmultidimensionalevaluation,
+      title={QGEval: Benchmarking Multi-dimensional Evaluation for Question Generation}, 
       author={Weiping Fu and Bifan Wei and Jianxiang Hu and Zhongmin Cai and Jun Liu},
       year={2024},
       eprint={2406.05707},
       archivePrefix={arXiv},
-      primaryClass={cs.CL}
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2406.05707}, 
 }
 ```
