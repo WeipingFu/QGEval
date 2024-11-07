@@ -1,7 +1,20 @@
 # QGEval
-Resources for paper - QGEval: Benchmarking Multi-dimensional Evaluation for Question Generation
+Resources for paper - [QGEval: Benchmarking Multi-dimensional Evaluation for Question Generation](https://arxiv.org/abs/2406.05707)
 
-## Data
+Accepted by EMNLP 2024.
+
+## Table of Contents <a name="table_of_contents"></a>
+[Table of Contents](#table_of_contents)
+[Data](#data)
+[Automatic Metrics](#metrics)
+[QG Models](#models)
+[How to Use](#usage)
+  [Question Generation](#qg)
+  [Automatic Metrics Calculation](#automatic_metrics)
+  [Evaluation of Automatic Metrics](#re-evaluation)
+[Citation](#citation)
+
+## Data <a name="data"></a>
 We share the generated questions from 15 QG models with averaged annotation scores of three annotators in [data/scores.xlsx](./data/scores.xlsx), and the instances integrated by passages are in [data/instances.json](./data/instances.json).
 We also share the annotation result of each annotator in [data/annotation result](./data/annotation%20result).
 
@@ -50,8 +63,8 @@ The average annotation scores of each QG model over 7 dimensions are shown in th
 | Avg.                  | 2.967    | 2.910     | 2.917     | 2.991    | 2.930     | 2.794   | 2.588 |
 
 
-## Metrics
-We implemented 15 metrics for re-evaluation, they are:
+## Automatic Metrics <a name="metrics"></a>
+We implemented 15 automatic metrics for re-evaluation, they are:
 | **Metrics**                | **Paper** | **Code Link** |
 |-----------------------------|----------|-----------|
 | BLEU-4            | [BLEU: a Method for Automatic Evaluation of Machine Translation](https://aclanthology.org/P02-1040.pdf)  |  [link](https://www.nltk.org/_modules/nltk/translate/bleu_score.html)   |
@@ -73,19 +86,38 @@ We implemented 15 metrics for re-evaluation, they are:
 We share the results of each metric on each generated question in [data/metric_result.xlsx](https://github.com/WeipingFu/QGEval/blob/main/data/metric_result.xlsx).
 Results of LLM-based metrics on answerability are in [data/test_answerability.xlsx](./data/test_answerability.xlsx).
 
-## Models
+## QG Models <a name="models"></a>
 You can find our trained QG model at [huggingface](https://huggingface.co/QGEval2024).
 
-## How to use
+## How to Use <a name="usage"></a>
 Our codes provide the ability to `evaluate automatic metrics`, you can also use our codes to `train Question Generation model` and `calculate automatic metrics`.
 
 You can install our packages for question generation or automatic metrics.
 - Question Generation: `pip install QGEval-qg`. For usage, please refer to [https://pypi.org/project/QGEval-qg/](https://pypi.org/project/QGEval-qg/).
 - Automatic Metrics: `pip install QGEval-metrics`. For usage, please refer to [https://pypi.org/project/QGEval-metrics/](https://pypi.org/project/QGEval-metrics/).
 
-You can also download this resource and use it following the instructions below.
+You can also download this resource and use it by following the instructions below.
 
-### Evaluation of Automatic Metrics
+
+### Question Generation <a name="qg"></a>
+The codes and the data for **Question Generation** are in [qg](./qg), train your own QG models by these steps:
+1. cd `./qg`
+2. run `pip install -r requirements.txt` to install the required packages
+3. run `python process.py` to process data
+4. run the code file for specific models to train. For example, run `python T5.py` to train your T5-based QG model
+
+Find more details in [qg/readme](./qg/README.md).
+
+###  Automatic Metrics Calculation <a name="automatic_metrics"></a>
+The codes for **Automatic Metrics Calculation(e.g. BLEU-4)** are in [metrics](./metrics), calculate automatic metrics by these steps:
+1. prepare data, you can get the Question Generation dataset at [qg/data](./qg/data) or you can prepare data yourself
+2. cd `./metric`
+3. run `pip install -r requirements.txt` to install the required packages
+4. run `python metrics.py` to get your chosen metrics evaluation results
+
+Find more details in [metrics/readme](./metrics/README.md).
+
+### Evaluation of Automatic Metrics <a name="re-evaluation"></a>
 The codes for **Automatic Metrics** are in [metrics](./metrics).
 
 Take the evaluation of QRelScore as an example, you can use the QGEval benchmark to evaluate QRelScore step by step:
@@ -154,25 +186,7 @@ You can get the QGEval dataset at [data/scores.xlsx](./data/scores.xlsx).
    ```
 More details about the codes for automatic metrics are in [metrics/readme](./metrics/README.md).
 
-### Question Generation
-The codes and the data for **Question Generation** are in [qg](./qg), train your own QG models by these steps:
-1. cd `./qg`
-2. run `pip install -r requirements.txt` to install the required packages
-3. run `python process.py` to process data
-4. run the code file for specific models to train. For example, run `python T5.py` to train your T5-based QG model
-
-Find more details in [qg/readme](./qg/README.md).
-
-###  Automatic Metrics Calculation
-The codes for **Automatic Metrics Calculation(e.g. BLEU-4)** are in [metrics](./metrics), calculate automatic metrics by these steps:
-1. prepare data, you can get the Question Generation dataset at [qg/data](./qg/data) or you can prepare data yourself
-2. cd `./metric`
-3. run `pip install -r requirements.txt` to install the required packages
-4. run `python metrics.py` to get your chosen metrics evaluation results
-
-Find more details in [metrics/readme](./metrics/README.md).
-
-## Citation
+## Citation <a name="citation"></a>
 Please cite:
 ```python
 @misc{fu2024qgevalbenchmarkingmultidimensionalevaluation,
