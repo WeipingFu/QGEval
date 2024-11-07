@@ -4,15 +4,16 @@ Resources for paper - [QGEval: Benchmarking Multi-dimensional Evaluation for Que
 Accepted by EMNLP 2024.
 
 ## Table of Contents <a name="table_of_contents"></a>
-[Table of Contents](#table_of_contents)
-[Data](#data)
-[Automatic Metrics](#metrics)
-[QG Models](#models)
-[How to Use](#usage)
-  [Question Generation](#qg)
-  [Automatic Metrics Calculation](#automatic_metrics)
-  [Evaluation of Automatic Metrics](#re-evaluation)
-[Citation](#citation)
+
+- [Table of Contents](#table_of_contents)
+- [Data](#data)
+- [Automatic Metrics](#metrics)
+- [QG Models](#models)
+- [How to Use](#usage)
+  - [Question Generation](#qg)
+  - [Automatic Metrics Calculation](#automatic_metrics)
+  - [Evaluation of Automatic Metrics](#re-evaluation)
+- [Citation](#citation)
 
 ## Data <a name="data"></a>
 We share the generated questions from 15 QG models with averaged annotation scores of three annotators in [data/scores.xlsx](./data/scores.xlsx), and the instances integrated by passages are in [data/instances.json](./data/instances.json).
